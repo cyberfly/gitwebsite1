@@ -6,20 +6,23 @@
 <title>SweetBakery — Kuala Lumpur</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Special+Elite&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          cream: '#FFF8F0',
-          caramel: '#C68B59',
-          cocoa: '#5C3A21',
-          rose: '#E8A0A0',
+          paper: '#F4E1BB',
+          cream: '#FBF3E1',
+          mustard: '#E7A233',
+          rust: '#C6472A',
+          olive: '#6F7D3C',
+          ink: '#2B1B12',
         },
         fontFamily: {
-          display: ['"Playfair Display"', 'serif'],
-          body: ['"Poppins"', 'sans-serif'],
+          display: ['"Bagel Fat One"', 'cursive'],
+          stamp: ['"Special Elite"', 'monospace'],
+          body: ['Poppins', 'sans-serif'],
         }
       }
     }
@@ -27,340 +30,385 @@
 </script>
 <style>
   html { scroll-behavior: smooth; }
-  body { font-family: 'Poppins', sans-serif; }
-  h1,h2,h3,.font-display { font-family: 'Playfair Display', serif; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F4E1BB;
+    background-image:
+      radial-gradient(circle, rgba(43,27,18,0.09) 1px, transparent 1.2px);
+    background-size: 14px 14px;
+  }
+  h1,h2,h3,.font-display { font-family: 'Bagel Fat One', cursive; }
+  .font-stamp { font-family: 'Special Elite', monospace; }
+
+  /* hard pop-art shadow */
+  .pop { border: 3px solid #2B1B12; box-shadow: 5px 5px 0 #2B1B12; transition: transform .15s ease, box-shadow .15s ease; }
+  .pop:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 #2B1B12; }
+  .pop:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #2B1B12; }
+
+  .pop-card { border: 3px solid #2B1B12; box-shadow: 6px 6px 0 #2B1B12; }
+
+  /* sunburst behind hero */
+  .sunburst {
+    background: repeating-conic-gradient(from 0deg, rgba(43,27,18,0.08) 0deg 8deg, transparent 8deg 16deg);
+    -webkit-mask-image: radial-gradient(circle at 50% 40%, black 45%, transparent 75%);
+            mask-image: radial-gradient(circle at 50% 40%, black 45%, transparent 75%);
+  }
+
+  /* scalloped divider */
+  .scallop {
+    height: 26px;
+    -webkit-mask: radial-gradient(circle at 13px 0, transparent 13px, black 14px) 0 -13px / 26px 26px repeat-x;
+            mask: radial-gradient(circle at 13px 0, transparent 13px, black 14px) 0 -13px / 26px 26px repeat-x;
+  }
+
+  /* retro stamp badge */
+  .stamp-badge {
+    border: 3px dashed #2B1B12;
+    border-radius: 9999px;
+    transform: rotate(-9deg);
+  }
+
+  /* polaroid gallery frame */
+  .polaroid { background: #FBF3E1; border: 1px solid rgba(43,27,18,0.15); box-shadow: 5px 5px 0 rgba(43,27,18,0.9); }
+
+  ::selection { background: #C6472A; color: #FBF3E1; }
 </style>
 </head>
-<body class="bg-cream text-cocoa">
+<body class="text-ink">
 
 <!-- Navbar -->
-<header class="fixed top-0 inset-x-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-caramel/20">
-  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-    <a href="#home" class="font-display text-2xl font-bold text-cocoa">🍞 SweetBakery</a>
-    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <li><a href="#home" class="hover:text-caramel transition">Beranda</a></li>
-      <li><a href="#menu" class="hover:text-caramel transition">Menu</a></li>
-      <li><a href="#about" class="hover:text-caramel transition">Tentang Kami</a></li>
-      <li><a href="#gallery" class="hover:text-caramel transition">Galeri</a></li>
-      <li><a href="#location" class="hover:text-caramel transition">Lokasi</a></li>
-      <li><a href="#contact" class="hover:text-caramel transition">Kontak</a></li>
+<header class="fixed top-0 inset-x-0 z-50 bg-cream border-b-4 border-ink">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+    <a href="#home" class="font-display text-2xl text-rust" style="text-shadow: 2px 2px 0 #2B1B12;">SweetBakery</a>
+    <ul class="hidden md:flex items-center gap-7 text-sm font-semibold uppercase tracking-wide">
+      <li><a href="#home" class="hover:text-rust transition">Beranda</a></li>
+      <li><a href="#menu" class="hover:text-rust transition">Menu</a></li>
+      <li><a href="#about" class="hover:text-rust transition">Tentang Kami</a></li>
+      <li><a href="#gallery" class="hover:text-rust transition">Galeri</a></li>
+      <li><a href="#location" class="hover:text-rust transition">Lokasi</a></li>
+      <li><a href="#contact" class="hover:text-rust transition">Kontak</a></li>
     </ul>
-    <a href="#contact" class="hidden md:inline-block bg-caramel text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-cocoa transition">Pesan Sekarang</a>
+    <a href="https://wa.me/60133909415" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 pop bg-olive text-cream px-5 py-2 rounded-full text-sm font-bold uppercase">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4 fill-current"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.702 4.607 1.912 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.627 28 15S22.629 3 16.001 3zm0 21.818a9.78 9.78 0 0 1-4.988-1.362l-.358-.213-4.583 1.11 1.128-4.47-.234-.37A9.79 9.79 0 0 1 5.182 15c0-5.964 4.854-10.818 10.819-10.818S26.818 9.036 26.818 15 21.966 24.818 16.001 24.818zm5.55-7.98c-.303-.152-1.79-.884-2.068-.985-.278-.101-.48-.152-.682.152-.202.303-.783.985-.96 1.187-.176.202-.353.227-.656.076-.303-.152-1.278-.471-2.434-1.503-.9-.803-1.508-1.795-1.685-2.098-.176-.303-.019-.467.133-.618.136-.135.303-.353.454-.53.152-.176.202-.303.303-.505.101-.202.05-.379-.025-.53-.076-.152-.682-1.646-.935-2.253-.246-.591-.497-.511-.682-.52l-.581-.01c-.202 0-.53.076-.808.379-.278.303-1.06 1.036-1.06 2.53 0 1.493 1.085 2.936 1.237 3.139.152.202 2.135 3.26 5.174 4.572.723.312 1.287.499 1.727.638.726.231 1.386.198 1.908.12.582-.087 1.79-.732 2.043-1.439.253-.707.253-1.313.177-1.44-.076-.126-.278-.202-.581-.354z"/></svg>
+      Pesan Sekarang
+    </a>
     <button id="menuBtn" class="md:hidden text-2xl">☰</button>
   </nav>
-  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3 bg-cream border-t border-caramel/20">
-    <a href="#home" class="block hover:text-caramel">Beranda</a>
-    <a href="#menu" class="block hover:text-caramel">Menu</a>
-    <a href="#about" class="block hover:text-caramel">Tentang Kami</a>
-    <a href="#gallery" class="block hover:text-caramel">Galeri</a>
-    <a href="#location" class="block hover:text-caramel">Lokasi</a>
-    <a href="#contact" class="block hover:text-caramel">Kontak</a>
+  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3 bg-cream border-t-2 border-ink font-semibold uppercase text-sm">
+    <a href="#home" class="block hover:text-rust">Beranda</a>
+    <a href="#menu" class="block hover:text-rust">Menu</a>
+    <a href="#about" class="block hover:text-rust">Tentang Kami</a>
+    <a href="#gallery" class="block hover:text-rust">Galeri</a>
+    <a href="#location" class="block hover:text-rust">Lokasi</a>
+    <a href="#contact" class="block hover:text-rust">Kontak</a>
   </div>
 </header>
 
 <!-- Hero -->
-<section id="home" class="relative pt-32 pb-24 px-6 overflow-hidden bg-cocoa">
-  <div class="absolute -top-20 -right-20 w-96 h-96 bg-rose/10 rounded-full blur-3xl"></div>
-  <div class="absolute top-40 -left-24 w-80 h-80 bg-caramel/20 rounded-full blur-3xl"></div>
+<section id="home" class="relative pt-32 pb-20 px-6 overflow-hidden">
+  <div class="absolute inset-0 sunburst"></div>
   <div class="max-w-6xl mx-auto relative grid md:grid-cols-2 gap-12 items-center">
     <div>
-      <span class="inline-block bg-caramel/15 text-caramel px-4 py-1.5 rounded-full text-sm font-semibold mb-5">Segar Setiap Hari sejak 2015</span>
-      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-cream">Roti &amp; Kue<br><span class="text-caramel">Dibuat Sepenuh Hati</span></h1>
-      <p class="text-lg text-cream/70 mb-8 max-w-md">Nikmati kelezatan roti, kue, dan pastri buatan tangan di jantung Kuala Lumpur. Dipanggang segar setiap pagi dengan bahan-bahan terbaik.</p>
+      <span class="inline-block pop bg-mustard text-ink px-4 py-1.5 rounded-full text-sm font-bold uppercase mb-6 -rotate-2">Segar Sejak 2015 ✦</span>
+      <h1 class="text-5xl md:text-6xl leading-[1.05] mb-6 text-ink" style="text-shadow: 3px 3px 0 #E7A233;">
+        Roti &amp; Kue<br><span class="text-rust">Rasa Kenangan</span>
+      </h1>
+      <p class="text-lg text-ink/80 mb-8 max-w-md font-medium">Nikmati kelezatan roti, kue, dan pastri buatan tangan di jantung Kuala Lumpur — resipi klasik yang tak lekang zaman, dipanggang segar setiap pagi.</p>
       <div class="flex flex-wrap gap-4">
-        <a href="#menu" class="bg-caramel text-cocoa px-7 py-3.5 rounded-full font-semibold hover:bg-cream transition shadow-lg shadow-black/20">Lihat Menu</a>
-        <a href="#location" class="border-2 border-cream/40 text-cream px-7 py-3.5 rounded-full font-semibold hover:bg-cream hover:text-cocoa hover:border-cream transition">Kunjungi Kami</a>
+        <a href="#menu" class="pop bg-rust text-cream px-7 py-3.5 rounded-full font-bold uppercase">Lihat Menu</a>
+        <a href="#location" class="pop bg-cream text-ink px-7 py-3.5 rounded-full font-bold uppercase">Kunjungi Kami</a>
       </div>
       <div class="flex gap-10 mt-12">
-        <div><p class="text-3xl font-bold font-display text-caramel">50+</p><p class="text-sm text-cream/50">Varian Roti &amp; Kue</p></div>
-        <div><p class="text-3xl font-bold font-display text-caramel">9</p><p class="text-sm text-cream/50">Tahun Beroperasi</p></div>
-        <div><p class="text-3xl font-bold font-display text-caramel">10k+</p><p class="text-sm text-cream/50">Pelanggan Puas</p></div>
+        <div><p class="text-3xl font-display text-rust">50+</p><p class="text-sm text-ink/60 font-semibold">Varian Roti &amp; Kue</p></div>
+        <div><p class="text-3xl font-display text-rust">9</p><p class="text-sm text-ink/60 font-semibold">Tahun Beroperasi</p></div>
+        <div><p class="text-3xl font-display text-rust">10k+</p><p class="text-sm text-ink/60 font-semibold">Pelanggan Puas</p></div>
       </div>
     </div>
     <div class="relative">
-      <div class="rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] ring-1 ring-cream/10">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop" alt="Aneka roti segar SweetBakery" class="w-full h-full object-cover">
+      <div class="pop-card rounded-[2rem] overflow-hidden aspect-[4/5] rotate-1">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop" alt="Aneka roti segar SweetBakery" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.12) contrast(1.05);">
       </div>
-      <div class="absolute -bottom-6 -left-6 bg-cream rounded-2xl shadow-xl p-5 flex items-center gap-3 max-w-[220px]">
-        <span class="text-3xl">⭐</span>
-        <div>
-          <p class="font-bold text-sm text-cocoa">4.9 / 5.0</p>
-          <p class="text-xs text-cocoa/60">dari 1,200+ ulasan</p>
-        </div>
+      <div class="absolute -bottom-7 -left-7 stamp-badge bg-mustard w-32 h-32 flex flex-col items-center justify-center text-center px-2">
+        <p class="font-stamp text-[10px] leading-tight uppercase">Bintang</p>
+        <p class="font-display text-2xl text-ink leading-none my-0.5">4.9</p>
+        <p class="font-stamp text-[9px] leading-tight uppercase">1200+ Ulasan</p>
       </div>
     </div>
   </div>
 </section>
+<div class="scallop bg-cream"></div>
 
 <!-- Menu -->
-<section id="menu" class="py-24 px-6 bg-white">
+<section id="menu" class="py-20 px-6 bg-cream">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <span class="text-caramel font-semibold uppercase tracking-wider text-sm">Menu Favorit</span>
-      <h2 class="text-4xl font-bold mt-2">Pilihan Terbaik Kami</h2>
+      <span class="font-stamp text-rust uppercase tracking-widest text-sm">✦ Menu Favorit ✦</span>
+      <h2 class="text-4xl mt-2">Pilihan Terbaik Kami</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop" alt="Croissant Butter" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop" alt="Croissant Butter" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Croissant Butter</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Renyah, berlapis, mentega premium.</p>
-          <p class="text-caramel font-bold">RM 6.90</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Croissant Butter</h3>
+          <p class="text-sm text-ink/60 mb-3">Renyah, berlapis, mentega premium.</p>
+          <p class="text-rust font-stamp font-bold">RM 6.90</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600&auto=format&fit=crop" alt="Sourdough Loaf" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600&auto=format&fit=crop" alt="Sourdough Loaf" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Sourdough Loaf</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Fermentasi alami 24 jam.</p>
-          <p class="text-caramel font-bold">RM 16.90</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Sourdough Loaf</h3>
+          <p class="text-sm text-ink/60 mb-3">Fermentasi alami 24 jam.</p>
+          <p class="text-rust font-stamp font-bold">RM 16.90</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop" alt="Chocolate Cake" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop" alt="Chocolate Cake" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Chocolate Cake</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Lapisan cokelat lumer premium.</p>
-          <p class="text-caramel font-bold">RM 15.90 /slice</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Chocolate Cake</h3>
+          <p class="text-sm text-ink/60 mb-3">Lapisan cokelat lumer premium.</p>
+          <p class="text-rust font-stamp font-bold">RM 15.90 /slice</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=600&auto=format&fit=crop" alt="Cinnamon Roll" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=600&auto=format&fit=crop" alt="Cinnamon Roll" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Cinnamon Roll</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Manis, hangat, dengan cream cheese.</p>
-          <p class="text-caramel font-bold">RM 8.50</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Cinnamon Roll</h3>
+          <p class="text-sm text-ink/60 mb-3">Manis, hangat, dengan cream cheese.</p>
+          <p class="text-rust font-stamp font-bold">RM 8.50</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=600&auto=format&fit=crop" alt="Fruit Tart" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=600&auto=format&fit=crop" alt="Fruit Tart" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Fruit Tart</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Custard lembut dengan buah segar.</p>
-          <p class="text-caramel font-bold">RM 12.90</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Fruit Tart</h3>
+          <p class="text-sm text-ink/60 mb-3">Custard lembut dengan buah segar.</p>
+          <p class="text-rust font-stamp font-bold">RM 12.90</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Baguette" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Baguette" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Baguette Klasik</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Kulit renyah, isi lembut.</p>
-          <p class="text-caramel font-bold">RM 9.50</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Baguette Klasik</h3>
+          <p class="text-sm text-ink/60 mb-3">Kulit renyah, isi lembut.</p>
+          <p class="text-rust font-stamp font-bold">RM 9.50</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1517686748843-bb360cd75b98?q=80&w=600&auto=format&fit=crop" alt="Donuts" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1517686748843-bb360cd75b98?q=80&w=600&auto=format&fit=crop" alt="Donuts" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Glazed Donut</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Lembut dengan glasir manis.</p>
-          <p class="text-caramel font-bold">RM 5.50</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Glazed Donut</h3>
+          <p class="text-sm text-ink/60 mb-3">Lembut dengan glasir manis.</p>
+          <p class="text-rust font-stamp font-bold">RM 5.50</p>
         </div>
       </div>
 
-      <div class="group bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
-        <div class="h-48 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Macarons" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+      <div class="pop-card bg-paper rounded-2xl overflow-hidden">
+        <div class="h-48 overflow-hidden border-b-[3px] border-ink">
+          <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Macarons" class="w-full h-full object-cover" style="filter: saturate(1.1) sepia(0.1);">
         </div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg mb-1">Macarons</h3>
-          <p class="text-sm text-cocoa/60 mb-3">Aneka rasa, renyah di luar lembut di dalam.</p>
-          <p class="text-caramel font-bold">RM 3.50 /pcs</p>
+          <h3 class="font-display text-lg mb-1 text-ink">Macarons</h3>
+          <p class="text-sm text-ink/60 mb-3">Aneka rasa, renyah di luar lembut di dalam.</p>
+          <p class="text-rust font-stamp font-bold">RM 3.50 /pcs</p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+<div class="scallop bg-paper"></div>
 
 <!-- About -->
-<section id="about" class="py-24 px-6">
+<section id="about" class="py-20 px-6 bg-paper">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-    <div class="grid grid-cols-2 gap-4">
-      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=500&auto=format&fit=crop" alt="Baker sedang bekerja" class="rounded-2xl w-full h-64 object-cover mt-8">
-      <img src="https://images.unsplash.com/photo-1590137876181-2a5a7e340de2?q=80&w=500&auto=format&fit=crop" alt="Interior toko roti" class="rounded-2xl w-full h-64 object-cover">
+    <div class="grid grid-cols-2 gap-5">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=500&auto=format&fit=crop" alt="Baker sedang bekerja" class="pop-card rounded-2xl w-full h-64 object-cover mt-8 -rotate-2" style="filter: sepia(0.12) saturate(1.1);">
+      <img src="https://images.unsplash.com/photo-1590137876181-2a5a7e340de2?q=80&w=500&auto=format&fit=crop" alt="Interior toko roti" class="pop-card rounded-2xl w-full h-64 object-cover rotate-2" style="filter: sepia(0.12) saturate(1.1);">
     </div>
     <div>
-      <span class="text-caramel font-semibold uppercase tracking-wider text-sm">Tentang Kami</span>
-      <h2 class="text-4xl font-bold mt-2 mb-5">Kisah SweetBakery</h2>
-      <p class="text-cocoa/70 mb-4 leading-relaxed">Berawal dari dapur kecil di Bangsar, SweetBakery kini menjadi salah satu kedai roti favorit di Kuala Lumpur. Kami percaya setiap potong roti harus dibuat dengan bahan berkualitas dan sepenuh hati.</p>
-      <p class="text-cocoa/70 mb-8 leading-relaxed">Tim baker kami memanggang segar setiap hari mulai pukul 5 pagi, memastikan pelanggan selalu mendapatkan roti dan kue terbaik.</p>
+      <span class="font-stamp text-rust uppercase tracking-widest text-sm">✦ Tentang Kami ✦</span>
+      <h2 class="text-4xl mt-2 mb-5">Kisah SweetBakery</h2>
+      <p class="text-ink/75 mb-4 leading-relaxed font-medium">Berawal dari dapur kecil di Bangsar, SweetBakery kini menjadi salah satu kedai roti favorit di Kuala Lumpur. Kami percaya setiap potong roti harus dibuat dengan bahan berkualitas dan sepenuh hati.</p>
+      <p class="text-ink/75 mb-8 leading-relaxed font-medium">Tim baker kami memanggang segar setiap hari mulai pukul 5 pagi, memastikan pelanggan selalu mendapatkan roti dan kue terbaik.</p>
       <div class="grid grid-cols-2 gap-6">
         <div class="flex items-start gap-3">
           <span class="text-2xl">🌾</span>
-          <div><p class="font-semibold">Bahan Premium</p><p class="text-sm text-cocoa/60">Tepung &amp; mentega pilihan</p></div>
+          <div><p class="font-bold">Bahan Premium</p><p class="text-sm text-ink/60">Tepung &amp; mentega pilihan</p></div>
         </div>
         <div class="flex items-start gap-3">
           <span class="text-2xl">👨‍🍳</span>
-          <div><p class="font-semibold">Baker Berpengalaman</p><p class="text-sm text-cocoa/60">Resep khas turun-temurun</p></div>
+          <div><p class="font-bold">Baker Berpengalaman</p><p class="text-sm text-ink/60">Resep khas turun-temurun</p></div>
         </div>
         <div class="flex items-start gap-3">
           <span class="text-2xl">🕔</span>
-          <div><p class="font-semibold">Segar Setiap Pagi</p><p class="text-sm text-cocoa/60">Dipanggang mulai jam 5 pagi</p></div>
+          <div><p class="font-bold">Segar Setiap Pagi</p><p class="text-sm text-ink/60">Dipanggang mulai jam 5 pagi</p></div>
         </div>
         <div class="flex items-start gap-3">
           <span class="text-2xl">💚</span>
-          <div><p class="font-semibold">Tanpa Pengawet</p><p class="text-sm text-cocoa/60">Alami dan sehat</p></div>
+          <div><p class="font-bold">Tanpa Pengawet</p><p class="text-sm text-ink/60">Alami dan sehat</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<div class="scallop bg-cream"></div>
 
 <!-- Gallery -->
-<section id="gallery" class="py-24 px-6 bg-white">
+<section id="gallery" class="py-20 px-6 bg-cream">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <span class="text-caramel font-semibold uppercase tracking-wider text-sm">Galeri</span>
-      <h2 class="text-4xl font-bold mt-2">Momen di SweetBakery</h2>
+      <span class="font-stamp text-rust uppercase tracking-widest text-sm">✦ Galeri ✦</span>
+      <h2 class="text-4xl mt-2">Momen di SweetBakery</h2>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 1">
-      <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 2">
-      <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 3">
-      <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 4">
-      <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 5">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 6">
-      <img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 7">
-      <img src="https://images.unsplash.com/photo-1541599468348-e96984315921?q=80&w=500&auto=format&fit=crop" class="rounded-xl w-full h-48 object-cover hover:opacity-80 transition" alt="Galeri 8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="polaroid p-2 pb-6 rotate-2"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 1"></div>
+      <div class="polaroid p-2 pb-6 -rotate-3"><img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 2"></div>
+      <div class="polaroid p-2 pb-6 rotate-1"><img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 3"></div>
+      <div class="polaroid p-2 pb-6 -rotate-2"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 4"></div>
+      <div class="polaroid p-2 pb-6 -rotate-1"><img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 5"></div>
+      <div class="polaroid p-2 pb-6 rotate-3"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 6"></div>
+      <div class="polaroid p-2 pb-6 rotate-2"><img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 7"></div>
+      <div class="polaroid p-2 pb-6 -rotate-2"><img src="https://images.unsplash.com/photo-1541599468348-e96984315921?q=80&w=500&auto=format&fit=crop" class="w-full h-40 object-cover" style="filter: sepia(0.15) saturate(1.1);" alt="Galeri 8"></div>
     </div>
   </div>
 </section>
 
 <!-- Testimonials -->
-<section class="py-24 px-6">
+<section class="py-20 px-6 bg-cream">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-14">
-      <span class="text-caramel font-semibold uppercase tracking-wider text-sm">Testimoni</span>
-      <h2 class="text-4xl font-bold mt-2">Apa Kata Pelanggan</h2>
+      <span class="font-stamp text-rust uppercase tracking-widest text-sm">✦ Testimoni ✦</span>
+      <h2 class="text-4xl mt-2">Apa Kata Pelanggan</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-8 rounded-2xl shadow-sm">
-        <p class="text-caramel mb-4">★★★★★</p>
-        <p class="text-cocoa/70 mb-6 italic">"Croissant-nya benar-benar terbaik yang pernah saya coba di KL. Selalu fresh dan renyah!"</p>
-        <p class="font-semibold">— Nurul A.</p>
+      <div class="pop-card bg-mustard/30 p-8 rounded-2xl rotate-1">
+        <p class="text-rust mb-4">★★★★★</p>
+        <p class="text-ink/80 mb-6 italic font-medium">"Croissant-nya benar-benar terbaik yang pernah saya coba di KL. Selalu fresh dan renyah!"</p>
+        <p class="font-stamp text-sm">— Nurul A.</p>
       </div>
-      <div class="bg-white p-8 rounded-2xl shadow-sm">
-        <p class="text-caramel mb-4">★★★★★</p>
-        <p class="text-cocoa/70 mb-6 italic">"Sourdough favorit keluarga saya. Tekstur dan rasa yang konsisten setiap kali beli."</p>
-        <p class="font-semibold">— Daniel T.</p>
+      <div class="pop-card bg-olive/20 p-8 rounded-2xl -rotate-1">
+        <p class="text-rust mb-4">★★★★★</p>
+        <p class="text-ink/80 mb-6 italic font-medium">"Sourdough favorit keluarga saya. Tekstur dan rasa yang konsisten setiap kali beli."</p>
+        <p class="font-stamp text-sm">— Daniel T.</p>
       </div>
-      <div class="bg-white p-8 rounded-2xl shadow-sm">
-        <p class="text-caramel mb-4">★★★★★</p>
-        <p class="text-cocoa/70 mb-6 italic">"Pelayanan ramah, tempat cozy, dan kuenya selalu enak. Wajib mampir kalau ke Bangsar!"</p>
-        <p class="font-semibold">— Siti R.</p>
+      <div class="pop-card bg-rust/15 p-8 rounded-2xl rotate-1">
+        <p class="text-rust mb-4">★★★★★</p>
+        <p class="text-ink/80 mb-6 italic font-medium">"Pelayanan ramah, tempat cozy, dan kuenya selalu enak. Wajib mampir kalau ke Bangsar!"</p>
+        <p class="font-stamp text-sm">— Siti R.</p>
       </div>
     </div>
   </div>
 </section>
+<div class="scallop bg-paper"></div>
 
 <!-- Location -->
-<section id="location" class="py-24 px-6 bg-white">
+<section id="location" class="py-20 px-6 bg-paper">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
     <div>
-      <span class="text-caramel font-semibold uppercase tracking-wider text-sm">Lokasi</span>
-      <h2 class="text-4xl font-bold mt-2 mb-5">Kunjungi Toko Kami</h2>
-      <p class="text-cocoa/70 mb-8 leading-relaxed">Kami berlokasi strategis di jantung Kuala Lumpur, mudah dijangkau dan tersedia tempat duduk nyaman untuk menikmati roti hangat langsung dari oven.</p>
+      <span class="font-stamp text-rust uppercase tracking-widest text-sm">✦ Lokasi ✦</span>
+      <h2 class="text-4xl mt-2 mb-5">Kunjungi Toko Kami</h2>
+      <p class="text-ink/75 mb-8 leading-relaxed font-medium">Kami berlokasi strategis di jantung Kuala Lumpur, mudah dijangkau dan tersedia tempat duduk nyaman untuk menikmati roti hangat langsung dari oven.</p>
       <div class="space-y-5">
         <div class="flex items-start gap-4">
           <span class="text-xl">📍</span>
           <div>
-            <p class="font-semibold">Alamat</p>
-            <p class="text-cocoa/60 text-sm">No. 12, Jalan Telawi 3, Bangsar Baru, 59100 Kuala Lumpur, Malaysia</p>
+            <p class="font-bold">Alamat</p>
+            <p class="text-ink/60 text-sm">No. 12, Jalan Telawi 3, Bangsar Baru, 59100 Kuala Lumpur, Malaysia</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <span class="text-xl">🕒</span>
           <div>
-            <p class="font-semibold">Jam Buka</p>
-            <p class="text-cocoa/60 text-sm">Setiap Hari: 07.00 – 21.00</p>
+            <p class="font-bold">Jam Buka</p>
+            <p class="text-ink/60 text-sm">Setiap Hari: 07.00 – 21.00</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
           <span class="text-xl">📞</span>
           <div>
-            <p class="font-semibold">Telepon</p>
-            <p class="text-cocoa/60 text-sm">+60 3-2201 5678</p>
+            <p class="font-bold">Telepon</p>
+            <p class="text-ink/60 text-sm">+60 3-2201 5678</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="rounded-2xl overflow-hidden shadow-lg h-96">
+    <div class="pop-card rounded-2xl overflow-hidden h-96">
       <iframe
         src="https://www.google.com/maps?q=Bangsar%20Baru%2C%20Kuala%20Lumpur&output=embed"
-        class="w-full h-full border-0" loading="lazy" title="Lokasi SweetBakery di Kuala Lumpur"></iframe>
+        class="w-full h-full border-0" style="filter: sepia(0.3) saturate(1.2);" loading="lazy" title="Lokasi SweetBakery di Kuala Lumpur"></iframe>
     </div>
   </div>
 </section>
 
 <!-- Contact / CTA -->
-<section id="contact" class="py-24 px-6">
-  <div class="max-w-4xl mx-auto bg-cocoa rounded-3xl px-8 py-16 text-center text-cream relative overflow-hidden">
-    <div class="absolute -top-10 -right-10 w-64 h-64 bg-caramel/20 rounded-full blur-3xl"></div>
-    <h2 class="text-4xl font-bold mb-4 relative">Ingin Memesan atau Bertanya?</h2>
-    <p class="text-cream/70 mb-8 max-w-xl mx-auto relative">Hubungi kami untuk pemesanan kue ulang tahun, katering acara, atau sekadar bertanya tentang menu hari ini.</p>
+<section id="contact" class="py-20 px-6 bg-paper">
+  <div class="max-w-4xl mx-auto pop-card bg-rust rounded-[2rem] px-8 py-16 text-center text-cream relative overflow-hidden rotate-0">
+    <h2 class="text-4xl mb-4 relative">Ingin Memesan atau Bertanya?</h2>
+    <p class="text-cream/85 mb-8 max-w-xl mx-auto relative font-medium">Hubungi kami untuk pemesanan kue ulang tahun, katering acara, atau sekadar bertanya tentang menu hari ini.</p>
     <div class="flex flex-wrap justify-center gap-4 relative">
-      <a href="tel:+60322015678" class="bg-caramel text-white px-7 py-3.5 rounded-full font-semibold hover:bg-rose transition">📞 Telepon Kami</a>
-      <a href="https://wa.me/60322015678" class="bg-white text-cocoa px-7 py-3.5 rounded-full font-semibold hover:bg-cream transition">💬 WhatsApp</a>
-      <a href="mailto:hello@sweetbakery.my" class="border-2 border-cream px-7 py-3.5 rounded-full font-semibold hover:bg-cream hover:text-cocoa transition">✉️ Email</a>
+      <a href="tel:+60322015678" class="pop bg-mustard text-ink px-7 py-3.5 rounded-full font-bold uppercase">📞 Telepon Kami</a>
+      <a href="https://wa.me/60133909415" target="_blank" rel="noopener" class="pop bg-olive text-cream px-7 py-3.5 rounded-full font-bold uppercase">💬 WhatsApp</a>
+      <a href="mailto:hello@sweetbakery.my" class="pop bg-cream text-ink px-7 py-3.5 rounded-full font-bold uppercase">✉️ Email</a>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-cocoa text-cream/80 pt-16 pb-8 px-6">
+<footer class="bg-ink text-cream pt-16 pb-8 px-6 border-t-4 border-ink">
   <div class="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10">
     <div>
-      <h3 class="font-display text-2xl font-bold text-cream mb-3">🍞 SweetBakery</h3>
-      <p class="text-sm">Roti dan kue segar buatan tangan, dibuat sepenuh hati untuk warga Kuala Lumpur.</p>
+      <h3 class="font-display text-2xl text-mustard mb-3">SweetBakery</h3>
+      <p class="text-sm text-cream/70">Roti dan kue segar buatan tangan, dibuat sepenuh hati untuk warga Kuala Lumpur.</p>
     </div>
     <div>
-      <h4 class="font-semibold text-cream mb-3">Navigasi</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#menu" class="hover:text-caramel">Menu</a></li>
-        <li><a href="#about" class="hover:text-caramel">Tentang Kami</a></li>
-        <li><a href="#gallery" class="hover:text-caramel">Galeri</a></li>
-        <li><a href="#location" class="hover:text-caramel">Lokasi</a></li>
+      <h4 class="font-bold text-cream mb-3 uppercase text-sm tracking-wide">Navigasi</h4>
+      <ul class="space-y-2 text-sm text-cream/70">
+        <li><a href="#menu" class="hover:text-mustard">Menu</a></li>
+        <li><a href="#about" class="hover:text-mustard">Tentang Kami</a></li>
+        <li><a href="#gallery" class="hover:text-mustard">Galeri</a></li>
+        <li><a href="#location" class="hover:text-mustard">Lokasi</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-cream mb-3">Kontak</h4>
-      <ul class="space-y-2 text-sm">
+      <h4 class="font-bold text-cream mb-3 uppercase text-sm tracking-wide">Kontak</h4>
+      <ul class="space-y-2 text-sm text-cream/70">
         <li>Bangsar Baru, Kuala Lumpur</li>
         <li>+60 3-2201 5678</li>
         <li>hello@sweetbakery.my</li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-cream mb-3">Ikuti Kami</h4>
+      <h4 class="font-bold text-cream mb-3 uppercase text-sm tracking-wide">Ikuti Kami</h4>
       <div class="flex gap-3">
-        <a href="#" class="w-10 h-10 flex items-center justify-center bg-cream/10 rounded-full hover:bg-caramel transition">IG</a>
-        <a href="#" class="w-10 h-10 flex items-center justify-center bg-cream/10 rounded-full hover:bg-caramel transition">FB</a>
-        <a href="#" class="w-10 h-10 flex items-center justify-center bg-cream/10 rounded-full hover:bg-caramel transition">TT</a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-cream/10 rounded-full hover:bg-mustard hover:text-ink transition text-xs font-bold">IG</a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-cream/10 rounded-full hover:bg-mustard hover:text-ink transition text-xs font-bold">FB</a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-cream/10 rounded-full hover:bg-mustard hover:text-ink transition text-xs font-bold">TT</a>
       </div>
     </div>
   </div>
-  <div class="max-w-6xl mx-auto border-t border-cream/10 pt-6 text-center text-sm text-cream/50">
+  <div class="max-w-6xl mx-auto border-t border-cream/15 pt-6 text-center text-sm text-cream/50 font-stamp">
     © 2026 SweetBakery Kuala Lumpur. Semua hak dilindungi.
   </div>
 </footer>

@@ -6,25 +6,25 @@
 <title>SweetBakery — Kuala Lumpur</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          void: '#05060c',
-          panel: '#0c1120',
-          panel2: '#111a30',
-          cyan: '#00f6ff',
-          magenta: '#ff2fb0',
-          amber: '#ffb703',
-          ink: '#dbe7f5',
-          dim: '#5c7086',
+          paper: '#f7f1e3',
+          paper2: '#f0e8d4',
+          ink: '#2b2a28',
+          ink2: '#5a564d',
+          coral: '#e8604c',
+          teal: '#3a8b83',
+          mustard: '#e8a93b',
+          pink: '#e6a1c2',
         },
         fontFamily: {
-          display: ['Orbitron', 'sans-serif'],
-          body: ['Rajdhani', 'sans-serif'],
-          mono: ['"JetBrains Mono"', 'monospace'],
+          hand: ['Caveat', 'cursive'],
+          body: ['"Patrick Hand"', 'sans-serif'],
+          marker: ['"Shadows Into Light"', 'cursive'],
         }
       }
     }
@@ -33,289 +33,285 @@
 <style>
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Rajdhani', sans-serif;
-    background:
-      radial-gradient(ellipse 120% 60% at 50% -10%, rgba(0,246,255,0.10), transparent 60%),
-      radial-gradient(ellipse 90% 50% at 100% 100%, rgba(255,47,176,0.08), transparent 60%),
-      #05060c;
-    background-attachment: fixed;
-  }
-  h1,h2,h3,.font-display { font-family: 'Orbitron', sans-serif; letter-spacing: 0.02em; }
-  .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-  /* scanline overlay */
-  .scanlines::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 60;
-    background: repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.025) 0px,
-      rgba(255,255,255,0.025) 1px,
-      transparent 2px,
-      transparent 3px
-    );
-    mix-blend-mode: overlay;
-  }
-
-  /* circuit grid background */
-  .grid-bg {
+    font-family: 'Patrick Hand', sans-serif;
+    color: #2b2a28;
+    background-color: #f7f1e3;
     background-image:
-      linear-gradient(rgba(0,246,255,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,246,255,0.07) 1px, transparent 1px);
-    background-size: 48px 48px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 40%, transparent 100%);
-            mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 40%, transparent 100%);
+      radial-gradient(#00000009 1px, transparent 1px),
+      repeating-linear-gradient(180deg, transparent, transparent 34px, #2b2a2812 35px);
+    background-size: 22px 22px, 100% 35px;
+  }
+  h1,h2,h3,.font-hand { font-family: 'Caveat', cursive; }
+
+  /* wobbly hand-drawn border via irregular radius per element */
+  .sketch-border {
+    border: 2.5px solid #2b2a28;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    box-shadow: 3px 4px 0 0 #2b2a2822;
+  }
+  .sketch-border-alt {
+    border: 2.5px solid #2b2a28;
+    border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+    box-shadow: -3px 4px 0 0 #2b2a2822;
+  }
+  .sketch-pill {
+    border: 2.5px solid #2b2a28;
+    border-radius: 40px 42px 38px 41px / 42px 38px 41px 40px;
   }
 
-  .neon-border { border: 1px solid rgba(0,246,255,0.35); box-shadow: 0 0 0 1px rgba(0,246,255,0.08) inset, 0 0 24px rgba(0,246,255,0.08); }
-  .neon-border-magenta { border: 1px solid rgba(255,47,176,0.4); box-shadow: 0 0 0 1px rgba(255,47,176,0.1) inset, 0 0 24px rgba(255,47,176,0.1); }
+  /* wavy underline drawn with inline svg */
+  .squiggle-underline {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='12' viewBox='0 0 120 12'%3E%3Cpath d='M2 8 Q 15 2, 30 8 T 60 8 T 90 8 T 118 8' stroke='%23e8604c' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-size: 60px 10px;
+    padding-bottom: 6px;
+  }
 
-  .text-glow-cyan { text-shadow: 0 0 10px rgba(0,246,255,0.6), 0 0 30px rgba(0,246,255,0.25); }
-  .text-glow-magenta { text-shadow: 0 0 10px rgba(255,47,176,0.6), 0 0 30px rgba(255,47,176,0.25); }
-  .text-glow-amber { text-shadow: 0 0 10px rgba(255,183,3,0.5); }
+  .tape {
+    position: absolute;
+    width: 70px; height: 26px;
+    background: repeating-linear-gradient(45deg, #fff5cc, #fff5cc 4px, #fdeeb0 4px, #fdeeb0 8px);
+    opacity: 0.85;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
 
-  /* glitch headline */
-  .glitch {
+  .polaroid {
+    background: #fffdf7;
+    padding: 10px 10px 34px 10px;
+    border: 1px solid #2b2a2830;
+    box-shadow: 4px 6px 10px rgba(0,0,0,0.18);
+  }
+
+  .pin {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.35), inset -2px -2px 3px rgba(0,0,0,0.2);
+  }
+
+  .strike {
     position: relative;
+    color: #8a8578;
+  }
+  .strike::after {
+    content: '';
+    position: absolute;
+    left: -2%; right: -2%; top: 50%;
+    height: 3px;
+    background: #e8604c;
+    transform: rotate(-2deg);
+  }
+
+  .hand-arrow {
     display: inline-block;
   }
-  .glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0; top: 0;
-    width: 100%;
-    overflow: hidden;
-    background: transparent;
+
+  .btn-sketch {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 2.5px solid #2b2a28;
+    border-radius: 40px 42px 38px 41px / 42px 38px 41px 40px;
+    padding: 0.7rem 1.6rem;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: transform 0.15s ease;
+    box-shadow: 3px 3px 0 0 #2b2a28;
   }
-  .glitch::before {
-    color: #00f6ff;
-    clip-path: inset(0 0 55% 0);
-    animation: glitchTop 5s infinite linear;
+  .btn-sketch:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 0 #2b2a28; }
+  .btn-sketch:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 0 #2b2a28; }
+
+  .rotate-1 { transform: rotate(-1.3deg); }
+  .rotate-2 { transform: rotate(1.6deg); }
+  .rotate-3 { transform: rotate(-0.8deg); }
+  .rotate-4 { transform: rotate(1.1deg); }
+
+  .sticky {
+    box-shadow: 5px 6px 10px rgba(0,0,0,0.2);
   }
-  .glitch::after {
-    color: #ff2fb0;
-    clip-path: inset(55% 0 0 0);
-    animation: glitchBottom 5s infinite linear;
-  }
-  @keyframes glitchTop {
-    0%, 92%, 100% { transform: translate(0,0); opacity: 0; }
-    93% { transform: translate(-3px,-1px); opacity: 0.8; }
-    95% { transform: translate(2px,1px); opacity: 0.8; }
-    97% { transform: translate(-2px,0); opacity: 0.6; }
-    98% { opacity: 0; }
-  }
-  @keyframes glitchBottom {
-    0%, 92%, 100% { transform: translate(0,0); opacity: 0; }
-    93% { transform: translate(3px,1px); opacity: 0.8; }
-    95% { transform: translate(-2px,-1px); opacity: 0.8; }
-    97% { transform: translate(2px,0); opacity: 0.6; }
-    98% { opacity: 0; }
+
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'%3E%3Cellipse cx='50' cy='20' rx='48' ry='18' fill='none' stroke='%23e8604c' stroke-width='2.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0.35rem 1.1rem;
   }
 
   .blink { animation: blink 1.6s step-start infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
-  .corner-frame { position: relative; }
-  .corner-frame::before, .corner-frame::after,
-  .corner-frame .cf-tr, .corner-frame .cf-bl { position: absolute; width: 22px; height: 22px; border-color: #00f6ff; }
-  .corner-frame::before { content:''; top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
-  .corner-frame::after { content:''; bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
-  .corner-frame .cf-tr { content:''; top: -1px; right: -1px; border-top: 2px solid #00f6ff; border-right: 2px solid #00f6ff; }
-  .corner-frame .cf-bl { content:''; bottom: -1px; left: -1px; border-bottom: 2px solid #00f6ff; border-left: 2px solid #00f6ff; }
-
-  .card-cyber { background: linear-gradient(180deg, rgba(17,26,48,0.9), rgba(12,17,32,0.9)); }
-  .card-cyber:hover { border-color: rgba(255,47,176,0.6); box-shadow: 0 0 30px rgba(255,47,176,0.15); }
-
-  ::selection { background: #ff2fb0; color: #05060c; }
+  ::selection { background: #e8a93b; color: #2b2a28; }
 
   @media (prefers-reduced-motion: reduce) {
-    .glitch::before, .glitch::after, .blink { animation: none; }
+    .blink { animation: none; }
   }
 </style>
 </head>
-<body class="bg-void text-ink scanlines">
+<body class="bg-paper text-ink">
 
 <!-- Navbar -->
-<header class="fixed top-0 inset-x-0 z-50 bg-void/85 backdrop-blur-md border-b border-cyan/20">
-  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-    <a href="#home" class="font-display text-xl font-bold text-ink">
-      <span class="text-cyan text-glow-cyan">SWEET</span><span class="text-magenta text-glow-magenta">BAKERY</span>
+<header class="fixed top-0 inset-x-0 z-50 bg-paper/95 backdrop-blur-sm border-b-[3px] border-ink" style="border-bottom-style: dashed;">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+    <a href="#home" class="font-hand text-3xl font-bold text-ink flex items-center gap-2">
+      <span class="text-2xl">🥐</span> SweetBakery
     </a>
-    <ul class="hidden md:flex items-center gap-8 text-sm font-mono uppercase tracking-wider text-dim">
-      <li><a href="#home" class="hover:text-cyan transition">01_Home</a></li>
-      <li><a href="#menu" class="hover:text-cyan transition">02_Menu</a></li>
-      <li><a href="#about" class="hover:text-cyan transition">03_Sistem</a></li>
-      <li><a href="#gallery" class="hover:text-cyan transition">04_Feed</a></li>
-      <li><a href="#location" class="hover:text-cyan transition">05_Radar</a></li>
-      <li><a href="#contact" class="hover:text-cyan transition">06_Link</a></li>
+    <ul class="hidden md:flex items-center gap-7 font-body text-base text-ink2">
+      <li><a href="#home" class="hover:text-coral squiggle-underline hover:bg-none">Beranda</a></li>
+      <li><a href="#menu" class="hover:text-coral">Menu</a></li>
+      <li><a href="#about" class="hover:text-coral">Cerita Kami</a></li>
+      <li><a href="#gallery" class="hover:text-coral">Galeri</a></li>
+      <li><a href="#location" class="hover:text-coral">Lokasi</a></li>
+      <li><a href="#contact" class="hover:text-coral">Hubungi</a></li>
     </ul>
-    <a href="https://wa.me/60133909415" target="_blank" rel="noopener" class="hidden md:inline-flex items-center gap-2 border border-cyan/60 text-cyan px-5 py-2 rounded-sm text-sm font-mono uppercase tracking-wide hover:bg-cyan hover:text-void transition">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-4 h-4 fill-current"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.702 4.607 1.912 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.001 27C22.629 27 28 21.627 28 15S22.629 3 16.001 3zm0 21.818a9.78 9.78 0 0 1-4.988-1.362l-.358-.213-4.583 1.11 1.128-4.47-.234-.37A9.79 9.79 0 0 1 5.182 15c0-5.964 4.854-10.818 10.819-10.818S26.818 9.036 26.818 15 21.966 24.818 16.001 24.818zm5.55-7.98c-.303-.152-1.79-.884-2.068-.985-.278-.101-.48-.152-.682.152-.202.303-.783.985-.96 1.187-.176.202-.353.227-.656.076-.303-.152-1.278-.471-2.434-1.503-.9-.803-1.508-1.795-1.685-2.098-.176-.303-.019-.467.133-.618.136-.135.303-.353.454-.53.152-.176.202-.303.303-.505.101-.202.05-.379-.025-.53-.076-.152-.682-1.646-.935-2.253-.246-.591-.497-.511-.682-.52l-.581-.01c-.202 0-.53.076-.808.379-.278.303-1.06 1.036-1.06 2.53 0 1.493 1.085 2.936 1.237 3.139.152.202 2.135 3.26 5.174 4.572.723.312 1.287.499 1.727.638.726.231 1.386.198 1.908.12.582-.087 1.79-.732 2.043-1.439.253-.707.253-1.313.177-1.44-.076-.126-.278-.202-.581-.354z"/></svg>
-      Pesan Sekarang
+    <a href="https://wa.me/60133909415" target="_blank" rel="noopener" class="hidden md:inline-flex btn-sketch bg-mustard/40">
+      💬 Pesan Sekarang
     </a>
-    <button id="menuBtn" class="md:hidden text-2xl text-cyan">☰</button>
+    <button id="menuBtn" class="md:hidden text-3xl text-ink">☰</button>
   </nav>
-  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3 bg-void border-t border-cyan/20 font-mono text-sm text-dim">
-    <a href="#home" class="block hover:text-cyan">01_Home</a>
-    <a href="#menu" class="block hover:text-cyan">02_Menu</a>
-    <a href="#about" class="block hover:text-cyan">03_Sistem</a>
-    <a href="#gallery" class="block hover:text-cyan">04_Feed</a>
-    <a href="#location" class="block hover:text-cyan">05_Radar</a>
-    <a href="#contact" class="block hover:text-cyan">06_Link</a>
+  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-3 bg-paper border-t-2 border-ink border-dashed font-body text-ink2">
+    <a href="#home" class="block hover:text-coral">Beranda</a>
+    <a href="#menu" class="block hover:text-coral">Menu</a>
+    <a href="#about" class="block hover:text-coral">Cerita Kami</a>
+    <a href="#gallery" class="block hover:text-coral">Galeri</a>
+    <a href="#location" class="block hover:text-coral">Lokasi</a>
+    <a href="#contact" class="block hover:text-coral">Hubungi</a>
   </div>
 </header>
 
 <!-- Hero -->
-<section id="home" class="relative pt-36 pb-28 px-6 overflow-hidden">
-  <div class="absolute inset-0 grid-bg"></div>
+<section id="home" class="relative pt-32 pb-20 px-6 overflow-hidden">
   <div class="max-w-6xl mx-auto relative grid md:grid-cols-2 gap-14 items-center">
     <div>
-      <p class="font-mono text-xs text-cyan/80 mb-5 tracking-widest">
-        [ SYSTEM ONLINE ] &gt; BOOTING BAKERY.EXE <span class="blink">_</span>
-      </p>
-      <h1 class="text-5xl md:text-6xl font-display font-bold leading-tight mb-6">
-        <span class="glitch text-ink" data-text="ROTI">ROTI</span><br>
-        <span class="text-cyan text-glow-cyan">DARI MASA</span><br>
-        <span class="text-magenta text-glow-magenta">DEPAN.</span>
+      <p class="font-marker text-coral text-xl mb-3">✎ selamat datang di dapur kami</p>
+      <h1 class="text-6xl md:text-7xl font-hand font-bold leading-[0.95] mb-6">
+        <span class="strike">Roti Biasa</span><br>
+        <span class="text-ink">jadi</span> <span class="text-coral squiggle-underline">Roti dari Hati.</span>
       </h1>
-      <p class="text-lg text-ink/70 mb-8 max-w-md font-body">
-        Roti dan kek artisan ditempa di dapur neon jantung Kuala Lumpur. Resipi klasik, dijalankan pada frekuensi baharu — segar setiap subuh, tiada kompromi.
+      <p class="text-xl text-ink2 mb-8 max-w-md">
+        Roti dan kek dibuat tangan setiap subuh di jantung Kuala Lumpur — resipi klasik keluarga, tiada bahan tergesa-gesa, tiada jalan pintas.
       </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#menu" class="bg-cyan text-void px-7 py-3.5 rounded-sm font-mono font-semibold uppercase tracking-wide hover:bg-magenta hover:text-void transition shadow-lg shadow-cyan/20">Lihat Menu &gt;</a>
-        <a href="#location" class="border border-ink/30 text-ink px-7 py-3.5 rounded-sm font-mono uppercase tracking-wide hover:border-cyan hover:text-cyan transition">Kunjungi Kami</a>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#menu" class="btn-sketch bg-coral/20">Lihat Menu ✏️</a>
+        <a href="#location" class="btn-sketch bg-teal/10">Kunjungi Kami 📍</a>
       </div>
-      <div class="flex gap-10 mt-14 font-mono">
-        <div><p class="text-3xl font-bold text-cyan text-glow-cyan">50+</p><p class="text-xs text-dim uppercase mt-1">Modul Roti</p></div>
-        <div><p class="text-3xl font-bold text-magenta text-glow-magenta">09</p><p class="text-xs text-dim uppercase mt-1">Tahun Uptime</p></div>
-        <div><p class="text-3xl font-bold text-amber text-glow-amber">10K+</p><p class="text-xs text-dim uppercase mt-1">Pengguna Puas</p></div>
+      <div class="flex gap-10 mt-14 font-hand">
+        <div><p class="text-4xl font-bold text-coral">50+</p><p class="text-sm text-ink2 font-body">jenis roti</p></div>
+        <div><p class="text-4xl font-bold text-teal">9</p><p class="text-sm text-ink2 font-body">tahun berkarya</p></div>
+        <div><p class="text-4xl font-bold text-mustard">10K+</p><p class="text-sm text-ink2 font-body">pelanggan gembira</p></div>
       </div>
     </div>
-    <div class="relative corner-frame">
-      <span class="cf-tr"></span><span class="cf-bl"></span>
-      <div class="rounded-sm overflow-hidden aspect-[4/5] neon-border relative">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop" alt="Aneka roti segar SweetBakery" class="w-full h-full object-cover" style="filter: saturate(1.15) contrast(1.05) hue-rotate(-5deg);">
-        <div class="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-cyan/10"></div>
-        <div class="absolute top-4 left-4 font-mono text-xs text-cyan bg-void/70 px-2 py-1 border border-cyan/40 rounded-sm">
-          <span class="text-magenta">●</span> LIVE_FEED / OVEN_07
-        </div>
+    <div class="relative">
+      <div class="polaroid rotate-2 max-w-sm mx-auto relative">
+        <span class="tape rotate-2" style="top:-14px; left:20px;"></span>
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1000&auto=format&fit=crop" alt="Aneka roti segar SweetBakery" class="w-full h-80 object-cover" style="filter: sepia(0.12) saturate(1.05);">
+        <p class="font-hand text-2xl text-center mt-3">segar setiap subuh ☀</p>
       </div>
-      <div class="absolute -bottom-6 -left-6 bg-panel neon-border-magenta rounded-sm shadow-xl p-5 flex items-center gap-3 max-w-[220px] font-mono">
-        <span class="text-2xl text-amber text-glow-amber">★</span>
-        <div>
-          <p class="font-bold text-sm text-ink">4.9 / 5.0</p>
-          <p class="text-xs text-dim">1,200+ log ulasan</p>
-        </div>
+      <div class="absolute -bottom-6 -left-4 bg-mustard/90 sketch-pill sticky p-4 flex items-center gap-2 max-w-[190px] rotate-1">
+        <span class="text-2xl">★★★★★</span>
+      </div>
+      <div class="absolute -bottom-6 right-2 bg-paper2 sketch-border sticky p-3 max-w-[160px] rotate-3 font-hand text-lg text-center">
+        4.9/5.0<br><span class="font-body text-xs text-ink2">1,200+ ulasan</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Menu -->
-<section id="menu" class="py-24 px-6 border-t border-cyan/10">
+<section id="menu" class="py-24 px-6 border-t-[3px] border-ink border-dashed">
   <div class="max-w-6xl mx-auto">
-    <div class="mb-14">
-      <p class="font-mono text-xs text-magenta tracking-widest mb-2">// 02_MENU_MODULES</p>
-      <h2 class="text-4xl font-display font-bold">Pilihan <span class="text-cyan text-glow-cyan">Terbaik</span></h2>
+    <div class="mb-14 text-center">
+      <p class="font-marker text-teal text-xl mb-2">✂ dari dapur kami ke meja anda</p>
+      <h2 class="text-5xl font-hand font-bold">Pilihan <span class="text-coral squiggle-underline">Terbaik</span></h2>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop" alt="Croissant Butter" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">BRD-001</span>
+      <div class="group sketch-border bg-white/70 overflow-hidden rotate-1 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop" alt="Croissant Butter" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
         </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Croissant Butter</h3>
-          <p class="text-sm text-dim mb-3 font-body">Renyah, berlapis, mentega premium.</p>
-          <p class="text-cyan font-mono font-bold">RM 6.90</p>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Croissant Butter</h3>
+          <p class="text-sm text-ink2 mb-3">Renyah, berlapis, mentega premium.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 6.90</span>
         </div>
       </div>
 
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600&auto=format&fit=crop" alt="Sourdough Loaf" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">BRD-002</span>
+      <div class="group sketch-border-alt bg-white/70 overflow-hidden rotate-2 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=600&auto=format&fit=crop" alt="Sourdough Loaf" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
         </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Sourdough Loaf</h3>
-          <p class="text-sm text-dim mb-3 font-body">Fermentasi alami 24 jam.</p>
-          <p class="text-cyan font-mono font-bold">RM 16.90</p>
-        </div>
-      </div>
-
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop" alt="Chocolate Cake" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">CKE-003</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Chocolate Cake</h3>
-          <p class="text-sm text-dim mb-3 font-body">Lapisan cokelat lumer premium.</p>
-          <p class="text-cyan font-mono font-bold">RM 15.90 /slice</p>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Sourdough Loaf</h3>
+          <p class="text-sm text-ink2 mb-3">Fermentasi alami 24 jam.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 16.90</span>
         </div>
       </div>
 
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=600&auto=format&fit=crop" alt="Cinnamon Roll" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">BRD-004</span>
+      <div class="group sketch-border bg-white/70 overflow-hidden rotate-3 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop" alt="Chocolate Cake" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
         </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Cinnamon Roll</h3>
-          <p class="text-sm text-dim mb-3 font-body">Manis, hangat, dengan cream cheese.</p>
-          <p class="text-cyan font-mono font-bold">RM 8.50</p>
-        </div>
-      </div>
-
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=600&auto=format&fit=crop" alt="Fruit Tart" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">CKE-005</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Fruit Tart</h3>
-          <p class="text-sm text-dim mb-3 font-body">Custard lembut dengan buah segar.</p>
-          <p class="text-cyan font-mono font-bold">RM 12.90</p>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Chocolate Cake</h3>
+          <p class="text-sm text-ink2 mb-3">Lapisan cokelat lumer premium.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 15.90 /slice</span>
         </div>
       </div>
 
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Baguette" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">BRD-006</span>
+      <div class="group sketch-border-alt bg-white/70 overflow-hidden rotate-1 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=600&auto=format&fit=crop" alt="Cinnamon Roll" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
         </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Baguette Klasik</h3>
-          <p class="text-sm text-dim mb-3 font-body">Kulit renyah, isi lembut.</p>
-          <p class="text-cyan font-mono font-bold">RM 9.50</p>
-        </div>
-      </div>
-
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1517686748843-bb360cd75b98?q=80&w=600&auto=format&fit=crop" alt="Donuts" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">DNT-007</span>
-        </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Glazed Donut</h3>
-          <p class="text-sm text-dim mb-3 font-body">Lembut dengan glasir manis.</p>
-          <p class="text-cyan font-mono font-bold">RM 5.50</p>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Cinnamon Roll</h3>
+          <p class="text-sm text-ink2 mb-3">Manis, hangat, dengan cream cheese.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 8.50</span>
         </div>
       </div>
 
-      <div class="group card-cyber neon-border rounded-sm overflow-hidden transition">
-        <div class="h-44 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Macarons" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);">
-          <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/80 px-2 py-0.5 border border-cyan/40">CKE-008</span>
+      <div class="group sketch-border bg-white/70 overflow-hidden rotate-2 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=600&auto=format&fit=crop" alt="Fruit Tart" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
         </div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-base mb-1">Macarons</h3>
-          <p class="text-sm text-dim mb-3 font-body">Aneka rasa, renyah di luar lembut di dalam.</p>
-          <p class="text-cyan font-mono font-bold">RM 3.50 /pcs</p>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Fruit Tart</h3>
+          <p class="text-sm text-ink2 mb-3">Custard lembut dengan buah segar.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 12.90</span>
+        </div>
+      </div>
+
+      <div class="group sketch-border-alt bg-white/70 overflow-hidden rotate-3 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Baguette" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
+        </div>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Baguette Klasik</h3>
+          <p class="text-sm text-ink2 mb-3">Kulit renyah, isi lembut.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 9.50</span>
+        </div>
+      </div>
+
+      <div class="group sketch-border bg-white/70 overflow-hidden rotate-1 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1517686748843-bb360cd75b98?q=80&w=600&auto=format&fit=crop" alt="Donuts" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
+        </div>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Glazed Donut</h3>
+          <p class="text-sm text-ink2 mb-3">Lembut dengan glasir manis.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 5.50</span>
+        </div>
+      </div>
+
+      <div class="group sketch-border-alt bg-white/70 overflow-hidden rotate-2 hover:rotate-0 transition duration-300">
+        <div class="h-40 overflow-hidden relative m-2">
+          <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=600&auto=format&fit=crop" alt="Macarons" class="w-full h-full object-cover rounded-md" style="filter: sepia(0.08) saturate(1.05);">
+        </div>
+        <div class="p-4 pt-0">
+          <h3 class="font-hand font-bold text-2xl mb-1">Macarons</h3>
+          <p class="text-sm text-ink2 mb-3">Aneka rasa, renyah di luar lembut di dalam.</p>
+          <span class="price-badge font-hand text-lg font-bold">RM 3.50 /pcs</span>
         </div>
       </div>
 
@@ -324,39 +320,39 @@
 </section>
 
 <!-- About -->
-<section id="about" class="py-24 px-6 border-t border-cyan/10 bg-panel/40">
+<section id="about" class="py-24 px-6 border-t-[3px] border-ink border-dashed bg-paper2/60">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-    <div class="grid grid-cols-2 gap-4">
-      <div class="corner-frame">
-        <span class="cf-tr"></span><span class="cf-bl"></span>
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=500&auto=format&fit=crop" alt="Baker sedang bekerja" class="w-full h-64 object-cover mt-8 neon-border" style="filter: saturate(1.1) contrast(1.05);">
+    <div class="grid grid-cols-2 gap-8 relative">
+      <div class="polaroid rotate-1 relative">
+        <span class="tape" style="top:-12px; left:30%;"></span>
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=500&auto=format&fit=crop" alt="Baker sedang bekerja" class="w-full h-56 object-cover" style="filter: sepia(0.1) saturate(1.05);">
       </div>
-      <div class="corner-frame">
-        <span class="cf-tr"></span><span class="cf-bl"></span>
-        <img src="https://images.unsplash.com/photo-1590137876181-2a5a7e340de2?q=80&w=500&auto=format&fit=crop" alt="Interior toko roti" class="w-full h-64 object-cover neon-border" style="filter: saturate(1.1) contrast(1.05);">
+      <div class="polaroid -rotate-2 mt-10 relative">
+        <span class="tape" style="top:-12px; left:30%;"></span>
+        <img src="https://images.unsplash.com/photo-1590137876181-2a5a7e340de2?q=80&w=500&auto=format&fit=crop" alt="Interior toko roti" class="w-full h-56 object-cover" style="filter: sepia(0.1) saturate(1.05);">
       </div>
     </div>
     <div>
-      <p class="font-mono text-xs text-magenta tracking-widest mb-2">// 03_SYSTEM_LOG</p>
-      <h2 class="text-4xl font-display font-bold mb-5">Kisah <span class="text-magenta text-glow-magenta">SweetBakery</span></h2>
-      <p class="text-ink/70 mb-4 leading-relaxed font-body">Berawal dari dapur kecil di Bangsar, SweetBakery kini menjadi salah satu node roti favorit di grid Kuala Lumpur. Kami percaya setiap potong roti harus dibuat dengan bahan berkualitas dan sepenuh hati — walau dijalankan pada kecepatan masa depan.</p>
-      <p class="text-ink/70 mb-8 leading-relaxed font-body">Tim baker kami memanggang segar setiap hari mulai pukul 5 pagi, memastikan pelanggan selalu mendapatkan roti dan kue terbaik dari sistem kami.</p>
-      <div class="grid grid-cols-2 gap-6 font-mono text-sm">
+      <p class="font-marker text-coral text-xl mb-2">✎ sejak dari dapur kecil</p>
+      <h2 class="text-5xl font-hand font-bold mb-5">Kisah <span class="text-coral squiggle-underline">SweetBakery</span></h2>
+      <p class="text-ink2 mb-4 leading-relaxed text-lg">Berawal dari dapur kecil di Bangsar, SweetBakery kini menjadi salah satu toko roti favorit di Kuala Lumpur. Kami percaya setiap potong roti harus dibuat dengan bahan berkualitas dan sepenuh hati.</p>
+      <p class="text-ink2 mb-8 leading-relaxed text-lg">Tim baker kami memanggang segar setiap hari mulai pukul 5 pagi, memastikan pelanggan selalu mendapatkan roti dan kue terbaik.</p>
+      <div class="grid grid-cols-2 gap-6 text-base">
         <div class="flex items-start gap-3">
-          <span class="text-cyan text-glow-cyan">◆</span>
-          <div><p class="font-semibold text-ink">Bahan Premium</p><p class="text-dim text-xs mt-1">Tepung &amp; mentega pilihan</p></div>
+          <span class="text-coral text-xl">🧈</span>
+          <div><p class="font-hand font-bold text-xl">Bahan Premium</p><p class="text-ink2 text-sm">Tepung &amp; mentega pilihan</p></div>
         </div>
         <div class="flex items-start gap-3">
-          <span class="text-magenta text-glow-magenta">◆</span>
-          <div><p class="font-semibold text-ink">Baker Berpengalaman</p><p class="text-dim text-xs mt-1">Resep khas turun-temurun</p></div>
+          <span class="text-teal text-xl">👩‍🍳</span>
+          <div><p class="font-hand font-bold text-xl">Baker Berpengalaman</p><p class="text-ink2 text-sm">Resep khas turun-temurun</p></div>
         </div>
         <div class="flex items-start gap-3">
-          <span class="text-cyan text-glow-cyan">◆</span>
-          <div><p class="font-semibold text-ink">Segar Setiap Pagi</p><p class="text-dim text-xs mt-1">Dipanggang mulai jam 5 pagi</p></div>
+          <span class="text-coral text-xl">🌅</span>
+          <div><p class="font-hand font-bold text-xl">Segar Setiap Pagi</p><p class="text-ink2 text-sm">Dipanggang mulai jam 5 pagi</p></div>
         </div>
         <div class="flex items-start gap-3">
-          <span class="text-magenta text-glow-magenta">◆</span>
-          <div><p class="font-semibold text-ink">Tanpa Pengawet</p><p class="text-dim text-xs mt-1">Alami dan sehat</p></div>
+          <span class="text-teal text-xl">🌿</span>
+          <div><p class="font-hand font-bold text-xl">Tanpa Pengawet</p><p class="text-ink2 text-sm">Alami dan sehat</p></div>
         </div>
       </div>
     </div>
@@ -364,149 +360,126 @@
 </section>
 
 <!-- Gallery -->
-<section id="gallery" class="py-24 px-6 border-t border-cyan/10">
+<section id="gallery" class="py-24 px-6 border-t-[3px] border-ink border-dashed">
   <div class="max-w-6xl mx-auto">
-    <div class="mb-14">
-      <p class="font-mono text-xs text-magenta tracking-widest mb-2">// 04_CCTV_FEED</p>
-      <h2 class="text-4xl font-display font-bold">Momen di <span class="text-cyan text-glow-cyan">SweetBakery</span></h2>
+    <div class="mb-14 text-center">
+      <p class="font-marker text-teal text-xl mb-2">📷 jepretan dari toko</p>
+      <h2 class="text-5xl font-hand font-bold">Momen di <span class="text-coral squiggle-underline">SweetBakery</span></h2>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 1">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_01</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 2">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_02</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 3">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_03</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 4">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_04</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 5">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_05</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 6">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_06</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 7">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_07</span>
-      </div>
-      <div class="relative overflow-hidden neon-border rounded-sm group">
-        <img src="https://images.unsplash.com/photo-1541599468348-e96984315921?q=80&w=500&auto=format&fit=crop" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500" style="filter: saturate(1.1) contrast(1.05);" alt="Galeri 8">
-        <span class="absolute top-2 left-2 font-mono text-[10px] text-cyan bg-void/70 px-1.5 py-0.5">CAM_08</span>
-      </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="polaroid rotate-2"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 1"></div>
+      <div class="polaroid -rotate-1"><img src="https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 2"></div>
+      <div class="polaroid rotate-3"><img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 3"></div>
+      <div class="polaroid -rotate-2"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 4"></div>
+      <div class="polaroid -rotate-3"><img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 5"></div>
+      <div class="polaroid rotate-1"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 6"></div>
+      <div class="polaroid -rotate-1"><img src="https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 7"></div>
+      <div class="polaroid rotate-2"><img src="https://images.unsplash.com/photo-1541599468348-e96984315921?q=80&w=500&auto=format&fit=crop" class="w-full h-36 object-cover" style="filter: sepia(0.1) saturate(1.05);" alt="Galeri 8"></div>
     </div>
   </div>
 </section>
 
 <!-- Testimonials -->
-<section class="py-24 px-6 border-t border-cyan/10 bg-panel/40">
+<section class="py-24 px-6 border-t-[3px] border-ink border-dashed bg-paper2/60">
   <div class="max-w-6xl mx-auto">
-    <div class="mb-14">
-      <p class="font-mono text-xs text-magenta tracking-widest mb-2">// LOG :: TESTIMONI_MASUK</p>
-      <h2 class="text-4xl font-display font-bold">Apa Kata <span class="text-magenta text-glow-magenta">Pengguna</span></h2>
+    <div class="mb-14 text-center">
+      <p class="font-marker text-coral text-xl mb-2">📌 nota dari pelanggan</p>
+      <h2 class="text-5xl font-hand font-bold">Apa Kata <span class="text-coral squiggle-underline">Pengguna</span></h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="card-cyber neon-border rounded-sm p-8 font-mono">
-        <p class="text-amber text-glow-amber mb-4 text-sm">★★★★★</p>
-        <p class="text-ink/70 mb-6 font-body italic">"Croissant-nya benar-benar terbaik yang pernah saya coba di KL. Selalu fresh dan renyah!"</p>
-        <p class="font-semibold text-cyan text-xs">&gt; user: Nurul_A</p>
+    <div class="grid md:grid-cols-3 gap-10 pt-4">
+      <div class="relative bg-mustard/70 sticky p-7 rotate-2">
+        <span class="pin bg-coral absolute -top-2 left-1/2 -translate-x-1/2"></span>
+        <p class="text-amber-900 mb-3 text-lg">★★★★★</p>
+        <p class="text-ink mb-5 text-lg italic">"Croissant-nya benar-benar terbaik yang pernah saya coba di KL. Selalu fresh dan renyah!"</p>
+        <p class="font-hand font-bold text-xl">— Nurul A.</p>
       </div>
-      <div class="card-cyber neon-border rounded-sm p-8 font-mono">
-        <p class="text-amber text-glow-amber mb-4 text-sm">★★★★★</p>
-        <p class="text-ink/70 mb-6 font-body italic">"Sourdough favorit keluarga saya. Tekstur dan rasa yang konsisten setiap kali beli."</p>
-        <p class="font-semibold text-cyan text-xs">&gt; user: Daniel_T</p>
+      <div class="relative bg-teal/30 sticky p-7 -rotate-2 md:mt-6">
+        <span class="pin bg-teal absolute -top-2 left-1/2 -translate-x-1/2"></span>
+        <p class="text-amber-900 mb-3 text-lg">★★★★★</p>
+        <p class="text-ink mb-5 text-lg italic">"Sourdough favorit keluarga saya. Tekstur dan rasa yang konsisten setiap kali beli."</p>
+        <p class="font-hand font-bold text-xl">— Daniel T.</p>
       </div>
-      <div class="card-cyber neon-border rounded-sm p-8 font-mono">
-        <p class="text-amber text-glow-amber mb-4 text-sm">★★★★★</p>
-        <p class="text-ink/70 mb-6 font-body italic">"Pelayanan ramah, tempat cozy, dan kuenya selalu enak. Wajib mampir kalau ke Bangsar!"</p>
-        <p class="font-semibold text-cyan text-xs">&gt; user: Siti_R</p>
+      <div class="relative bg-pink/50 sticky p-7 rotate-1">
+        <span class="pin bg-pink absolute -top-2 left-1/2 -translate-x-1/2"></span>
+        <p class="text-amber-900 mb-3 text-lg">★★★★★</p>
+        <p class="text-ink mb-5 text-lg italic">"Pelayanan ramah, tempat cozy, dan kuenya selalu enak. Wajib mampir kalau ke Bangsar!"</p>
+        <p class="font-hand font-bold text-xl">— Siti R.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Location -->
-<section id="location" class="py-24 px-6 border-t border-cyan/10">
+<section id="location" class="py-24 px-6 border-t-[3px] border-ink border-dashed">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
     <div>
-      <p class="font-mono text-xs text-magenta tracking-widest mb-2">// 05_RADAR_KOORDINAT</p>
-      <h2 class="text-4xl font-display font-bold mb-5">Kunjungi <span class="text-cyan text-glow-cyan">Toko</span> Kami</h2>
-      <p class="text-ink/70 mb-8 leading-relaxed font-body">Kami berlokasi strategis di jantung Kuala Lumpur, mudah dijangkau dan tersedia tempat duduk nyaman untuk menikmati roti hangat langsung dari oven.</p>
-      <div class="space-y-5 font-mono text-sm">
+      <p class="font-marker text-teal text-xl mb-2">📍 mudah dijumpai</p>
+      <h2 class="text-5xl font-hand font-bold mb-5">Kunjungi <span class="text-coral squiggle-underline">Toko</span> Kami</h2>
+      <p class="text-ink2 mb-8 leading-relaxed text-lg">Kami berlokasi strategis di jantung Kuala Lumpur, mudah dijangkau dan tersedia tempat duduk nyaman untuk menikmati roti hangat langsung dari oven.</p>
+      <div class="space-y-5 text-base">
         <div class="flex items-start gap-4">
-          <span class="text-cyan">[LOC]</span>
+          <span class="text-2xl">🏠</span>
           <div>
-            <p class="font-semibold text-ink">Alamat</p>
-            <p class="text-dim">No. 12, Jalan Telawi 3, Bangsar Baru, 59100 Kuala Lumpur, Malaysia</p>
+            <p class="font-hand font-bold text-xl">Alamat</p>
+            <p class="text-ink2">No. 12, Jalan Telawi 3, Bangsar Baru, 59100 Kuala Lumpur, Malaysia</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <span class="text-cyan">[HRS]</span>
+          <span class="text-2xl">⏰</span>
           <div>
-            <p class="font-semibold text-ink">Jam Buka</p>
-            <p class="text-dim">Setiap Hari: 07.00 – 21.00</p>
+            <p class="font-hand font-bold text-xl">Jam Buka</p>
+            <p class="text-ink2">Setiap Hari: 07.00 – 21.00</p>
           </div>
         </div>
         <div class="flex items-start gap-4">
-          <span class="text-cyan">[TEL]</span>
+          <span class="text-2xl">☎️</span>
           <div>
-            <p class="font-semibold text-ink">Telepon</p>
-            <p class="text-dim">+60 3-2201 5678</p>
+            <p class="font-hand font-bold text-xl">Telepon</p>
+            <p class="text-ink2">+60 3-2201 5678</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="rounded-sm overflow-hidden neon-border h-96 relative">
+    <div class="sketch-border overflow-hidden h-96 relative bg-white/70 p-2">
       <iframe
         src="https://www.google.com/maps?q=Bangsar%20Baru%2C%20Kuala%20Lumpur&output=embed"
-        class="w-full h-full border-0 grayscale contrast-125" style="filter: invert(0.92) hue-rotate(180deg) grayscale(0.3);" loading="lazy" title="Lokasi SweetBakery di Kuala Lumpur"></iframe>
-      <div class="absolute top-3 left-3 font-mono text-[10px] text-cyan bg-void/70 px-2 py-1 border border-cyan/40">RADAR_ACTIVE</div>
+        class="w-full h-full border-0 rounded-md" style="filter: sepia(0.3) saturate(0.7);" loading="lazy" title="Lokasi SweetBakery di Kuala Lumpur"></iframe>
     </div>
   </div>
 </section>
 
 <!-- Contact / CTA -->
-<section id="contact" class="py-24 px-6 border-t border-cyan/10">
-  <div class="max-w-4xl mx-auto bg-panel neon-border-magenta rounded-sm px-8 py-16 text-center relative overflow-hidden">
-    <div class="absolute inset-0 grid-bg opacity-40"></div>
-    <p class="font-mono text-xs text-cyan tracking-widest mb-3 relative">// 06_ESTABLISH_LINK</p>
-    <h2 class="text-4xl font-display font-bold mb-4 relative">Ingin Memesan atau <span class="text-magenta text-glow-magenta">Bertanya</span>?</h2>
-    <p class="text-ink/70 mb-8 max-w-xl mx-auto relative font-body">Hubungi kami untuk pemesanan kue ulang tahun, katering acara, atau sekadar bertanya tentang menu hari ini.</p>
-    <div class="flex flex-wrap justify-center gap-4 relative font-mono uppercase text-sm tracking-wide">
-      <a href="tel:+60322015678" class="bg-cyan text-void px-7 py-3.5 rounded-sm font-semibold hover:bg-amber transition">📞 Telepon Kami</a>
-      <a href="https://wa.me/60133909415" target="_blank" rel="noopener" class="bg-magenta text-void px-7 py-3.5 rounded-sm font-semibold hover:bg-amber transition">💬 WhatsApp</a>
-      <a href="mailto:hello@sweetbakery.my" class="border border-ink/30 text-ink px-7 py-3.5 rounded-sm font-semibold hover:border-cyan hover:text-cyan transition">✉️ Email</a>
+<section id="contact" class="py-24 px-6 border-t-[3px] border-ink border-dashed">
+  <div class="max-w-4xl mx-auto sketch-border bg-paper2 px-8 py-16 text-center relative">
+    <p class="font-marker text-coral text-xl mb-3">✎ jom sembang</p>
+    <h2 class="text-5xl font-hand font-bold mb-4">Ingin Memesan atau <span class="text-coral squiggle-underline">Bertanya</span>?</h2>
+    <p class="text-ink2 mb-8 max-w-xl mx-auto text-lg">Hubungi kami untuk pemesanan kue ulang tahun, katering acara, atau sekadar bertanya tentang menu hari ini.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="tel:+60322015678" class="btn-sketch bg-coral/25">📞 Telepon Kami</a>
+      <a href="https://wa.me/60133909415" target="_blank" rel="noopener" class="btn-sketch bg-teal/20">💬 WhatsApp</a>
+      <a href="mailto:hello@sweetbakery.my" class="btn-sketch bg-mustard/30">✉️ Email</a>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="border-t border-cyan/10 text-dim pt-16 pb-8 px-6 font-mono">
-  <div class="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10 text-sm">
+<footer class="border-t-[3px] border-ink border-dashed text-ink2 pt-16 pb-8 px-6">
+  <div class="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10 text-base">
     <div>
-      <h3 class="font-display text-xl font-bold text-ink mb-3"><span class="text-cyan">SWEET</span><span class="text-magenta">BAKERY</span></h3>
+      <h3 class="font-hand text-3xl font-bold text-ink mb-3">🥐 SweetBakery</h3>
       <p>Roti dan kue segar buatan tangan, dijalankan sepenuh hati untuk warga Kuala Lumpur.</p>
     </div>
     <div>
-      <h4 class="font-semibold text-ink mb-3 uppercase tracking-wide">Navigasi</h4>
+      <h4 class="font-hand font-bold text-xl text-ink mb-3">Navigasi</h4>
       <ul class="space-y-2">
-        <li><a href="#menu" class="hover:text-cyan">Menu</a></li>
-        <li><a href="#about" class="hover:text-cyan">Tentang Kami</a></li>
-        <li><a href="#gallery" class="hover:text-cyan">Galeri</a></li>
-        <li><a href="#location" class="hover:text-cyan">Lokasi</a></li>
+        <li><a href="#menu" class="hover:text-coral">Menu</a></li>
+        <li><a href="#about" class="hover:text-coral">Tentang Kami</a></li>
+        <li><a href="#gallery" class="hover:text-coral">Galeri</a></li>
+        <li><a href="#location" class="hover:text-coral">Lokasi</a></li>
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-ink mb-3 uppercase tracking-wide">Kontak</h4>
+      <h4 class="font-hand font-bold text-xl text-ink mb-3">Kontak</h4>
       <ul class="space-y-2">
         <li>Bangsar Baru, Kuala Lumpur</li>
         <li>+60 3-2201 5678</li>
@@ -514,16 +487,16 @@
       </ul>
     </div>
     <div>
-      <h4 class="font-semibold text-ink mb-3 uppercase tracking-wide">Ikuti Kami</h4>
+      <h4 class="font-hand font-bold text-xl text-ink mb-3">Ikuti Kami</h4>
       <div class="flex gap-3">
-        <a href="#" class="w-9 h-9 flex items-center justify-center border border-cyan/30 rounded-sm hover:border-cyan hover:text-cyan transition text-xs">IG</a>
-        <a href="#" class="w-9 h-9 flex items-center justify-center border border-cyan/30 rounded-sm hover:border-cyan hover:text-cyan transition text-xs">FB</a>
-        <a href="#" class="w-9 h-9 flex items-center justify-center border border-cyan/30 rounded-sm hover:border-cyan hover:text-cyan transition text-xs">TT</a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center sketch-pill hover:bg-coral/20 transition text-sm">IG</a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center sketch-pill hover:bg-coral/20 transition text-sm">FB</a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center sketch-pill hover:bg-coral/20 transition text-sm">TT</a>
       </div>
     </div>
   </div>
-  <div class="max-w-6xl mx-auto border-t border-cyan/10 pt-6 text-center text-xs">
-    &gt; © 2026 SWEETBAKERY_KL.SYS — ALL RIGHTS RESERVED <span class="blink">_</span>
+  <div class="max-w-6xl mx-auto border-t-2 border-ink border-dashed pt-6 text-center text-sm font-hand text-lg">
+    © 2026 SweetBakery Kuala Lumpur — dibuat dengan ♡ <span class="blink">_</span>
   </div>
 </footer>
 
